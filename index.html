@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Práctica de Tablas de Multiplicar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #fdf6e3;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    input, button {
+      font-size: 18px;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    #resultado {
+      border: 2px solid #ccc;
+      background-color: #fff;
+      padding: 20px;
+      margin-top: 20px;
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 8px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Generador de Tablas de Multiplicar</h1>
+
+  <label for="numero">Selecciona un número (1 al 12):</label><br>
+  <input type="number" id="numero" min="1" max="12">
+  <button onclick="generarTabla()">Mostrar Tabla</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function generarTabla() {
+      const numero = parseInt(document.getElementById("numero").value);
+      const resultadoDiv = document.getElementById("resultado");
+      resultadoDiv.innerHTML = ""; // Limpiar resultados anteriores
+
+      if (isNaN(numero) || numero < 1 || numero > 12) {
+        resultadoDiv.innerHTML = "<p class='error'>Por favor, ingresa un número entre 1 y 12.</p>";
+        return;
+      }
+
+      let contenido = `<h2>Tabla del ${numero}</h2>`;
+      for (let i = 1; i <= 12; i++) {
+        contenido += `<p>${numero} × ${i} = ${numero * i}</p>`;
+      }
+
+      resultadoDiv.innerHTML = contenido;
+    }
+  </script>
+
+</body>
+</html>
